@@ -30,7 +30,7 @@ jobs:
           ./gradlew compileJava -Pmc=${{ matrix.mc }} --stacktrace
           mkdir -p javap
           for c in $(cd build/classes/java/main && find . -name '*.class' | sort); do
-            javap -c -p -v "build/classes/java/main/$c" | grep -v -E '^(Classfile|  Last modified|  SHA-256|  MD5 checksum)' > "javap/$(echo $c | tr / _).txt"
+            javap -c -p -v "build/classes/java/main/$c" | grep -v -E '^(Classfile|  Last modified|  SHA-256|  MD5 checksum)' > "javap/$(echo ${c#./} | tr / _).txt"
           done
       - uses: actions/upload-artifact@v4
         with:
