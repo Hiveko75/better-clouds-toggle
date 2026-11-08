@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "better-clouds-toggle",
+  "version": "${version}",
+  "name": "Better Clouds Toggle",
+  "description": "Adds a key binding that switches Better Clouds on and off (the \"Enable\" option of its settings), without changing Better Clouds itself.",
+  "authors": ["Hiveko"],
+  "contact": {
+    "sources": "https://github.com/Hiveko75/better-clouds-toggle",
+    "issues": "https://github.com/Hiveko75/better-clouds-toggle/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["io.github.hiveko.cloudstoggle.BetterCloudsToggle"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "fabric-api": "*",
+    "minecraft": ">=26.3-",
+    "java": ">=25",
+    "betterclouds": "*"
+  }
+}
