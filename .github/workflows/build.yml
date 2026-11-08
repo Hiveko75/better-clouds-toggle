@@ -10,28 +10,68 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  # Compile the 26.x sources against every supported 26.x version and make sure the bytecode is
+  # the same, so the single 26.x jar works on all of them.
+  check-26:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mc: ['26.1.2', '26.2', '26.3']
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup JDK 25
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: '25'
           distribution: 'temurin'
+      - uses: gradle/actions/setup-gradle@v5
+      - name: Compile against Minecraft ${{ matrix.mc }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew compileJava -Pmc=${{ matrix.mc }} --stacktrace
+          mkdir -p javap
+          for c in $(cd build/classes/java/main && find . -name '*.class' | sort); do
+            javap -c -p -v "build/classes/java/main/$c" | grep -v -E '^(Classfile|  Last modified|  SHA-256|  MD5 checksum)' > "javap/$(echo $c | tr / _).txt"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: javap-${{ matrix.mc }}
+          path: javap/
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5
+  compare-26:
+    needs: check-26
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: javap-*
+      - name: Bytecode identical on all 26.x versions
+        run: |
+          diff -r javap-26.1.2 javap-26.2 && diff -r javap-26.1.2 javap-26.3 && echo "identical"
 
-      - name: Build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup JDK 21 and 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: |
+            21
+            25
+          distribution: 'temurin'
+      - uses: gradle/actions/setup-gradle@v5
+      - name: Build 26.1.2 - 26.3 jar
         run: |
           chmod +x ./gradlew
           ./gradlew build --stacktrace
-
-      - name: Upload jar
-        uses: actions/upload-artifact@v4
+      - name: Build 1.21.11 jar
+        run: ./gradlew -p mc1.21.11 build --stacktrace
+      - name: Collect jars
+        run: |
+          mkdir dist
+          cp build/libs/*+mc26.1.2-26.3.jar mc1.21.11/build/libs/*+mc1.21.11.jar dist/
+          ls -l dist
+      - uses: actions/upload-artifact@v4
         with:
           name: better-clouds-toggle
-          path: build/libs/*.jar
+          path: dist/*.jar

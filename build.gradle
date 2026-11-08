@@ -2,24 +2,31 @@ plugins {
     id 'net.fabricmc.fabric-loom' version "${loom_version}"
 }
 
-version = project.mod_version
+def mc = (findProperty('mc') ?: project.mc_default).toString()
+def v = new Properties()
+file("versions/${mc}.properties").withInputStream { v.load(it) }
+
+version = "${project.mod_version}+mc26.1.2-26.3"
 group = project.maven_group
 
 base {
     archivesName = project.archives_base_name
 }
 
+sourceSets.main.java.srcDir 'platform/mc26/java'
+
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    minecraft "com.mojang:minecraft:${v.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${v.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${v.fabric_version}"
+    // Better Clouds and YACL are not needed at compile time: they are reached by name at run time.
 }
 
 processResources {
-    inputs.property "version", project.version
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
+    def props = [version: project.version, minecraft_range: project.minecraft_range,
+                 loader_min: project.loader_min, java_version: '25']
+    inputs.properties props
+    filesMatching("fabric.mod.json") { expand props }
 }
 
 tasks.withType(JavaCompile).configureEach {

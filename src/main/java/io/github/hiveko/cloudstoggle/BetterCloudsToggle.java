@@ -3,7 +3,6 @@ package io.github.hiveko.cloudstoggle;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -35,7 +34,7 @@ public class BetterCloudsToggle implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        toggleKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        toggleKey = Platform.registerKey(new KeyMapping(
                 "key." + MOD_ID + ".toggle",
                 InputConstants.Type.KEYBOARD,
                 InputConstants.UNKNOWN.getValue(),
@@ -65,7 +64,7 @@ public class BetterCloudsToggle implements ClientModInitializer {
             message = Component.translatable(MOD_ID + ".message.failed").withStyle(ChatFormatting.RED);
         }
         if (client.player != null) {
-            client.player.sendOverlayMessage(message);
+            Platform.showOverlay(client, message);
         }
     }
 
