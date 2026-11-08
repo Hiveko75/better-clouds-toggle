@@ -36,7 +36,6 @@ public class BetterCloudsToggle implements ClientModInitializer {
     public void onInitializeClient() {
         toggleKey = Platform.registerKey(new KeyMapping(
                 "key." + MOD_ID + ".toggle",
-                InputConstants.Type.KEYBOARD,
                 InputConstants.UNKNOWN.getValue(),
                 new KeyMapping.Category(Identifier.fromNamespaceAndPath(MOD_ID, "keys"))
         ));

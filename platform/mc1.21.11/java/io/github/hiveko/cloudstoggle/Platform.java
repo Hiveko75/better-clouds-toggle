@@ -14,6 +14,6 @@ final class Platform {
     }
 
     static void showOverlay(Minecraft client, Component message) {
-        client.gui.setOverlayMessage(message, false);
+        client.player.displayClientMessage(message, true);
     }
 }
