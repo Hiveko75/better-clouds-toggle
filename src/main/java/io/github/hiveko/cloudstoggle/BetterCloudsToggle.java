@@ -56,8 +56,9 @@ public class BetterCloudsToggle implements ClientModInitializer {
             boolean now = !enabled.getBoolean(config);
             enabled.setBoolean(config, now);
             save.invoke(handler.invoke(null));
-            message = Component.translatable(MOD_ID + ".message." + (now ? "on" : "off"))
-                    .withStyle(now ? ChatFormatting.GREEN : ChatFormatting.GRAY);
+            Component state = Component.translatable(MOD_ID + ".message." + (now ? "on" : "off"))
+                    .withStyle(now ? ChatFormatting.GREEN : ChatFormatting.RED);
+            message = Component.translatable(MOD_ID + ".message", state).withStyle(ChatFormatting.GRAY);
         } catch (ReflectiveOperationException | RuntimeException e) {
             LOGGER.error("Could not toggle Better Clouds", e);
             message = Component.translatable(MOD_ID + ".message.failed").withStyle(ChatFormatting.RED);

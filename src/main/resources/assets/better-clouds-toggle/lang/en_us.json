@@ -1,7 +1,8 @@
 {
   "key.better-clouds-toggle.toggle": "Toggle Better Clouds",
   "key.category.better-clouds-toggle.keys": "Better Clouds",
-  "better-clouds-toggle.message.on": "Better Clouds: On",
-  "better-clouds-toggle.message.off": "Better Clouds: Off",
+  "better-clouds-toggle.message": "Better Clouds: %s",
+  "better-clouds-toggle.message.on": "On",
+  "better-clouds-toggle.message.off": "Off",
   "better-clouds-toggle.message.failed": "Better Clouds could not be toggled (see log)"
 }
