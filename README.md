@@ -13,8 +13,9 @@ Requires Better Clouds and Fabric API.
 |---|---|
 | `better-clouds-toggle-<version>+mc26.1.2-26.3.jar` | 26.1.2, 26.2, 26.3 |
 | `better-clouds-toggle-<version>+mc1.21.11.jar` | 1.21.11 |
+| `better-clouds-toggle-<version>+mc1.21.1.jar` | 1.21, 1.21.1 |
 
-Building: `./gradlew build` (26.x jar) and `./gradlew -p mc1.21.11 build` (1.21.11 jar).
+Building: `./gradlew build` (26.x jar) `./gradlew -p mc1.21.11 build` (1.21.11 jar) and `./gradlew -p mc1.21.1 build` (1.21.1 jar).
 CI also compiles the 26.x sources against each 26.x version and checks the bytecode is identical.
 
 License: MIT. Better Clouds is MPL-2.0 by Qendolin.

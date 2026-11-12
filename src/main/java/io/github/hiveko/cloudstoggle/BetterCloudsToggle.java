@@ -1,13 +1,11 @@
 package io.github.hiveko.cloudstoggle;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,11 +32,7 @@ public class BetterCloudsToggle implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        toggleKey = Platform.registerKey(new KeyMapping(
-                "key." + MOD_ID + ".toggle",
-                InputConstants.UNKNOWN.getValue(),
-                new KeyMapping.Category(Identifier.fromNamespaceAndPath(MOD_ID, "keys"))
-        ));
+        toggleKey = Platform.registerKey("key." + MOD_ID + ".toggle", MOD_ID, "keys");
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (toggleKey.consumeClick()) {

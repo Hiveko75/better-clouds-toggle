@@ -31,8 +31,9 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build --stacktrace
           ./gradlew -p mc1.21.11 build --stacktrace
+          ./gradlew -p mc1.21.1 build --stacktrace
           mkdir dist
-          cp build/libs/*+mc26.1.2-26.3.jar mc1.21.11/build/libs/*+mc1.21.11.jar dist/
+          cp build/libs/*+mc26.1.2-26.3.jar mc1.21.11/build/libs/*+mc1.21.11.jar mc1.21.1/build/libs/*+mc1.21.1.jar dist/
           ls -l dist
       - name: Create release
         env:
@@ -50,6 +51,7 @@ jobs:
           |---|---|
           | `better-clouds-toggle-*+mc26.1.2-26.3.jar` | 26.1.2, 26.2, 26.3 |
           | `better-clouds-toggle-*+mc1.21.11.jar` | 1.21.11 |
+          | `better-clouds-toggle-*+mc1.21.1.jar` | 1.21, 1.21.1 |
 
           Requires Fabric API and Better Clouds. Client-side only.
           NOTES

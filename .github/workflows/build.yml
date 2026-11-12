@@ -66,10 +66,12 @@ jobs:
           ./gradlew build --stacktrace
       - name: Build 1.21.11 jar
         run: ./gradlew -p mc1.21.11 build --stacktrace
+      - name: Build 1.21.1 jar
+        run: ./gradlew -p mc1.21.1 build --stacktrace
       - name: Collect jars
         run: |
           mkdir dist
-          cp build/libs/*+mc26.1.2-26.3.jar mc1.21.11/build/libs/*+mc1.21.11.jar dist/
+          cp build/libs/*+mc26.1.2-26.3.jar mc1.21.11/build/libs/*+mc1.21.11.jar mc1.21.1/build/libs/*+mc1.21.1.jar dist/
           ls -l dist
       - uses: actions/upload-artifact@v4
         with:
