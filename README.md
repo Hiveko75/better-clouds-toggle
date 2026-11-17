@@ -7,7 +7,18 @@ that adds a key binding to switch Better Clouds on and off, the same as its **En
 - Takes effect immediately and is saved to Better Clouds' own config. While off, vanilla clouds are shown.
 - Better Clouds is not modified, bundled or compiled against; this mod only flips its existing setting.
 
-Requires Better Clouds and Fabric API.
+## Mellow shader preset
+
+Mellow works in linear colour, so Better Clouds' clouds look too bright and flat under it. When the
+active Iris shader pack's file name starts with **Mellow** (any version or fork), this mod selects a
+Better Clouds shader preset called **Mellow (auto)**, and switches back to the previous preset when
+you change pack or turn shaders off.
+
+- The preset is created once as a copy of Better Clouds' *Default* preset with **Gamma -2.2**.
+  Tune it under *Better Clouds → Shaders*; your changes are kept.
+- Better Clouds still needs **Iris Support** on to draw with shaders at all.
+
+Requires Better Clouds and Fabric API. Iris is optional.
 
 | Jar | Minecraft |
 |---|---|

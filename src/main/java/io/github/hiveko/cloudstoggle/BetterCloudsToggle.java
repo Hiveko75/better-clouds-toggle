@@ -38,6 +38,7 @@ public class BetterCloudsToggle implements ClientModInitializer {
             while (toggleKey.consumeClick()) {
                 toggle(client);
             }
+            MellowPreset.tick();
         });
     }
 
