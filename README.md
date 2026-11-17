@@ -14,7 +14,8 @@ active Iris shader pack's file name starts with **Mellow** (any version or fork)
 Better Clouds shader preset called **Mellow (auto)**, and switches back to the previous preset when
 you change pack or turn shaders off.
 
-- The preset is created once as a copy of Better Clouds' *Default* preset with **Gamma -2.2**.
+- The preset is created once as a copy of Better Clouds' *Default* preset with **Gamma -2.2**,
+  **Day Brightness 0.5**, **Saturation 2.0** and **Opacity Factor 0.5**.
   Tune it under *Better Clouds → Shaders*; your changes are kept.
 - Better Clouds still needs **Iris Support** on to draw with shaders at all.
 

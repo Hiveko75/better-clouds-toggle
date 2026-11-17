@@ -18,7 +18,8 @@ import java.util.Optional;
  * Mellow renders in linear colour and tonemaps at the end, while Better Clouds writes display
  * (gamma-encoded) colour, so under Mellow its clouds come out too bright and flat. A Better Clouds
  * preset with Gamma -2.2 linearises them first, the same as its built-in presets for other
- * linear-light packs. The preset ("Mellow (auto)") is created once as a copy of the Default
+ * linear-light packs; lower brightness and opacity with more saturation keep Mellow's tonemap from
+ * bleaching them white. The preset ("Mellow (auto)") is created once as a copy of the Default
  * preset and can be tuned in Better Clouds' own settings afterwards; it is never overwritten.
  *
  * Like the toggle key, nothing is compiled against Better Clouds or Iris: both are reached by name
@@ -29,7 +30,11 @@ final class MellowPreset {
     static final String KEY = "mellow_auto";
     private static final String TITLE = "Mellow (auto)";
     private static final String PACK_PREFIX = "mellow";
+    // Tuned in game under Mellow 3.5 at sunset (Better Clouds 1.15, Voxy 0.2.20).
     private static final float GAMMA = -2.2f;
+    private static final float DAY_BRIGHTNESS = 0.5f;
+    private static final float SATURATION = 2.0f;
+    private static final float OPACITY_FACTOR = 0.5f;
     private static final int CHECK_INTERVAL_TICKS = 10;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Better Clouds Toggle");
@@ -100,7 +105,7 @@ final class MellowPreset {
         }
     }
 
-    /** A copy of the Default preset (or the first one) with Gamma -2.2. */
+    /** A copy of the Default preset (or the first one) with the Mellow values above. */
     private static Object createPreset(List<Object> list) throws ReflectiveOperationException {
         int base = indexOfKey(list, "default");
         Object source = list.get(Math.max(base, 0));
@@ -113,6 +118,9 @@ final class MellowPreset {
                 "Selected automatically by Better Clouds Toggle when a Mellow shader pack is active.");
         type.getField("editable").setBoolean(preset, true);
         type.getField("gamma").setFloat(preset, GAMMA);
+        type.getField("dayBrightness").setFloat(preset, DAY_BRIGHTNESS);
+        type.getField("saturation").setFloat(preset, SATURATION);
+        type.getField("opacityFactor").setFloat(preset, OPACITY_FACTOR);
         return preset;
     }
 
