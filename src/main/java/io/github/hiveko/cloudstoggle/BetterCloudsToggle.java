@@ -39,6 +39,7 @@ public class BetterCloudsToggle implements ClientModInitializer {
                 toggle(client);
             }
             MellowPreset.tick();
+            VoxyCloudDepth.tick();
         });
     }
 

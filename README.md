@@ -18,7 +18,13 @@ you change pack or turn shaders off.
   Tune it under *Better Clouds → Shaders*; your changes are kept.
 - Better Clouds still needs **Iris Support** on to draw with shaders at all.
 
-Requires Better Clouds and Fabric API. Iris is optional.
+## Clouds behind Voxy terrain with shaders
+
+Better Clouds 1.15 ships its Voxy support switched off, so with a shader pack its clouds were drawn
+in front of distant Voxy mountains. When Voxy is installed, this mod turns that built-in support on
+(nothing is added to Better Clouds), so clouds are hidden behind Voxy terrain again.
+
+Requires Better Clouds and Fabric API. Iris and Voxy are optional.
 
 | Jar | Minecraft |
 |---|---|

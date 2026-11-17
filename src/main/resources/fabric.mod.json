@@ -3,7 +3,7 @@
   "id": "better-clouds-toggle",
   "version": "${version}",
   "name": "Better Clouds Toggle",
-  "description": "Adds a key binding that switches Better Clouds on and off (the \"Enable\" option of its settings), and selects a matching Better Clouds preset when a Mellow shader pack is active, without changing Better Clouds itself.",
+  "description": "Adds a key binding that switches Better Clouds on and off (the \"Enable\" option of its settings), selects a matching Better Clouds preset when a Mellow shader pack is active, and enables Better Clouds' built-in Voxy depth support with shaders, without changing Better Clouds itself.",
   "authors": ["Hiveko"],
   "contact": {
     "sources": "https://github.com/Hiveko75/better-clouds-toggle",
