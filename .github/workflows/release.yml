@@ -46,6 +46,8 @@ jobs:
 
           - Bind it under *Options → Controls → Key Binds → Better Clouds → Toggle Better Clouds* (unbound by default).
           - Shows "Better Clouds: On/Off" above the hotbar. Takes effect immediately and is saved to Better Clouds' own config; while off, vanilla clouds are shown.
+          - Mellow shaders: when the active Iris shader pack's name starts with "Mellow", selects a Better Clouds shader preset made for it ("Mellow (auto)", created once from Default, tunable in Better Clouds' settings), and switches back when you change pack or turn shaders off.
+          - Voxy: turns on Better Clouds' built-in Voxy support, so with shaders clouds are hidden behind distant Voxy terrain.
 
           | File | Minecraft |
           |---|---|
