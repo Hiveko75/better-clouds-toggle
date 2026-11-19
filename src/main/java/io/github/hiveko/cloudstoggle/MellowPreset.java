@@ -18,7 +18,7 @@ import java.util.Optional;
  * Mellow renders in linear colour and tonemaps at the end, while Better Clouds writes display
  * (gamma-encoded) colour, so under Mellow its clouds come out too bright and flat. A Better Clouds
  * preset with Gamma -2.2 linearises them first, the same as its built-in presets for other
- * linear-light packs; lower brightness and opacity with more saturation keep Mellow's tonemap from
+ * linear-light packs; lower brightness with more saturation keeps Mellow's tonemap from
  * bleaching them white. The preset ("Mellow (auto)") is created once as a copy of the Default
  * preset and can be tuned in Better Clouds' own settings afterwards; it is never overwritten.
  *
@@ -34,7 +34,7 @@ final class MellowPreset {
     private static final float GAMMA = -2.2f;
     private static final float DAY_BRIGHTNESS = 0.5f;
     private static final float SATURATION = 2.0f;
-    private static final float OPACITY_FACTOR = 0.5f;
+    private static final float OPACITY_FACTOR = 1.0f;   // full opacity: with Better Clouds 1.15.1, 50% made Mellow's clouds too thin
     private static final int CHECK_INTERVAL_TICKS = 10;
 
     private static final Logger LOGGER = LoggerFactory.getLogger("Better Clouds Toggle");
