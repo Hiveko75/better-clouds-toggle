@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  attestations: write
 
 jobs:
   # Compile the 26.x sources against every supported 26.x version and make sure the bytecode is
@@ -79,3 +81,9 @@ jobs:
           name: better-clouds-toggle
           path: dist/*.jar
           retention-days: 14
+
+      - name: Attest build provenance
+        if: github.event_name != 'pull_request'
+        uses: actions/attest@v4
+        with:
+          subject-path: 'dist/*.jar'
