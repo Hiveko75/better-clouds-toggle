@@ -36,6 +36,7 @@ jobs:
         with:
           name: javap-${{ matrix.mc }}
           path: javap/
+          retention-days: 14
 
   compare-26:
     needs: check-26
@@ -77,3 +78,4 @@ jobs:
         with:
           name: better-clouds-toggle
           path: dist/*.jar
+          retention-days: 14
