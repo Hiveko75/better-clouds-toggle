@@ -1,5 +1,10 @@
 # Better Clouds Toggle
 
+> **No longer developed (25 Nov 2026).** Its features are now part of **Vanilla Finest Fixes**, the
+> fixes mod of the [Vanilla Finest](https://modrinth.com/modpack/vanilla-finest-survival) modpacks
+> (same key binding). This repository is archived: the code and the released jars stay available,
+> but there will be no new versions.
+
 A small client-side Fabric add-on for [Better Clouds](https://github.com/Qendolin/better-clouds)
 that adds a key binding to switch Better Clouds on and off, the same as its **Enable** option.
 
