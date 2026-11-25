@@ -1,8 +1,8 @@
 # Better Clouds Toggle
 
-> **No longer developed (25 Nov 2026).** Its features are now part of **Vanilla Finest Fixes**, the
-> fixes mod of the [Vanilla Finest](https://modrinth.com/modpack/vanilla-finest-survival) modpacks
-> (same key binding). This repository is archived: the code and the released jars stay available,
+> **No longer developed (25 Nov 2026).** Its features are now part of
+> [Vanilla Finest Fixes](https://github.com/Hiveko75/vanilla-finest-fixes), the fixes mod of the
+> [Vanilla Finest](https://modrinth.com/modpack/vanilla-finest-survival) modpacks (same key binding). This repository is archived: the code and the released jars stay available,
 > but there will be no new versions.
 
 A small client-side Fabric add-on for [Better Clouds](https://github.com/Qendolin/better-clouds)
